@@ -6,7 +6,7 @@ const COLORS = [
   'bgMagenta.bold', 'bgCyan.bold', 'bgRed.bold',
 ];
 
-const semanas = decks.filter(d => d.name !== 'openclass-iot');
+const semanas = decks.filter(d => d.name !== 'openclass-bigdata');
 const BASE_PORT = 3000;
 
 const commands = [
@@ -14,13 +14,13 @@ const commands = [
   ...semanas.map((deck, i) => `slidev ${deck.entry} --port ${BASE_PORT + i + 1}`),
 ];
 
-const names = ['portal', ...semanas.map(d => d.name.replace('iot_', ''))].join(',');
+const names = ['portal', ...semanas.map(d => d.name.replace('bigdata_', ''))].join(',');
 const colors = COLORS.slice(0, commands.length).join(',');
 
 console.log('\n🚀 Iniciando servidores de desarrollo...');
 console.log(`   portal  → http://localhost:${BASE_PORT}`);
 semanas.forEach((deck, i) => {
-  console.log(`   ${deck.name.replace('iot_', '')}  → http://localhost:${BASE_PORT + i + 1}`);
+  console.log(`   ${deck.name.replace('bigdata_', '')}  → http://localhost:${BASE_PORT + i + 1}`);
 });
 console.log('');
 

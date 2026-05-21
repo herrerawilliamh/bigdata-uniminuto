@@ -497,7 +497,7 @@ Relacionar cada elemento del código con el concepto visto en clase. El metadata
 -->
 
 ---
-layout: slide-08-titulo-texto
+layout: slide-codigo
 ---
 
 ::title::
@@ -505,7 +505,7 @@ Código completo en Python
 
 ::content::
 
-```python
+```python {lines:true}
 """
 Simulador pedagógico de almacenamiento distribuido.
 Curso: Big Data - Semana 3
