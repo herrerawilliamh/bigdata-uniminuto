@@ -1,5 +1,5 @@
 <script setup>
-import AutoFitText from "../components/AutoFitText.vue";
+import AutoFitText from '../components/AutoFitText.vue'
 </script>
 
 <template>
@@ -8,7 +8,7 @@ import AutoFitText from "../components/AutoFitText.vue";
 
     <div class="title-wrap">
       <AutoFitText tag="h1" class="title" :min="20" :max="42" line-height="1.05">
-        <slot name="title">Agrega un titulo</slot>
+        <slot name="title">Agrega un título</slot>
       </AutoFitText>
     </div>
 
@@ -53,7 +53,7 @@ import AutoFitText from "../components/AutoFitText.vue";
 .title {
   margin: 0 !important;
   color: #ffffff !important;
-  font-family: var(--font-title, "Merriweather Sans", Arial, sans-serif);
+  font-family: var(--font-title, 'Merriweather Sans', Arial, sans-serif);
   font-weight: 800;
 }
 

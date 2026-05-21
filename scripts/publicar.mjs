@@ -1,36 +1,36 @@
-import { execSync } from "node:child_process";
+import { execSync } from 'child_process';
 
-const fecha = new Date().toLocaleString("es-CO", {
-  timeZone: "America/Bogota",
-  year: "numeric",
-  month: "2-digit",
-  day: "2-digit",
-  hour: "2-digit",
-  minute: "2-digit",
+const fecha = new Date().toLocaleString('es-CO', {
+  timeZone: 'America/Bogota',
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
 });
 
-const mensaje = `Actualizacion de diapositivas - ${fecha}`;
+const mensaje = `Actualización de diapositivas - ${fecha}`;
 
 function run(cmd) {
-  execSync(cmd, { stdio: "inherit" });
+  execSync(cmd, { stdio: 'inherit' });
 }
 
-console.log("\nVerificando cambios...");
-const status = execSync("git status --porcelain").toString().trim();
+console.log('\n🔍 Verificando cambios...');
+const status = execSync('git status --porcelain').toString().trim();
 
 if (!status) {
-  console.log("No hay cambios para publicar.");
+  console.log('⚠️  No hay cambios para publicar.');
   process.exit(0);
 }
 
-console.log("\nPreparando archivos...");
-run("git add -A");
+console.log('\n📦 Preparando archivos...');
+run('git add -A');
 
-console.log("\nConfirmando cambios...");
+console.log('\n💾 Confirmando cambios...');
 run(`git commit -m "${mensaje}"`);
 
-console.log("\nSubiendo a GitHub...");
-run("git push");
+console.log('\n🚀 Subiendo a GitHub...');
+run('git push');
 
-console.log(`\nPublicado: ${mensaje}`);
-console.log("GitHub Actions desplegara el sitio automaticamente.\n");
+console.log(`\n✅ Publicado: ${mensaje}`);
+console.log('   GitHub Actions desplegará el sitio automáticamente.\n');
