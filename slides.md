@@ -1,6 +1,8 @@
 ---
 theme: ./theme/uniminuto
 title: Big Data — Open Class
+favicon: /favicon.png
+codeCopy: true
 transition: fade
 routerMode: hash
 drawings:

@@ -47,5 +47,12 @@ function normalizeBase(value) {
       base: withBase("semanas/bigdata_semana3/"),
       exportable: true,
     },
+    {
+      name: "bigdata_semana4",
+      entry: "bigdata_semana4.md",
+      out: "dist/semanas/bigdata_semana4",
+      base: withBase("semanas/bigdata_semana4/"),
+      exportable: true,
+    },
     // Activa cada semana aquí cuando el contenido esté listo.
   ];
