@@ -145,7 +145,7 @@ Presentaciones disponibles
 
 ### **Semana 8**
 
-<a href="./semanas/bigdata_semana8/#/1" target="_self"Aplicaciones prácticas en las organizaciones.</a>
+<a href="./semanas/bigdata_semana8/#/1" target="_self">Aplicaciones prácticas en las organizaciones.</a>
 
 <a href="./descargas/bigdata_semana8.pdf" target="_blank">Descargar PDF</a> · <a href="./descargas/bigdata_semana8.pptx" target="_blank">Descargar PPTX</a>
 
