@@ -119,34 +119,35 @@ Presentaciones disponibles
 
 ### **Semana 4**
 
-Plataforma de procesamiento de datos.
+<a href="./semanas/bigdata_semana4/#/1" target="_self">Plataformas de procesamiento de datos.</a>
 
-Disponible cuando se active el contenido.
+
+<a href="./descargas/bigdata_semana4.pdf" target="_blank">Descargar PDF</a> · <a href="./descargas/bigdata_semana4.pptx" target="_blank">Descargar PPTX</a>
 
 ::right::
 ### **Semana 5**
 
-Tecnologías de streaming y mensajería.
+<a href="./semanas/bigdata_semana5/#/1" target="_self">Tecnologías de streaming y mensajería.</a>
 
-Disponible cuando se active el contenido.
+<a href="./descargas/bigdata_semana5.pdf" target="_blank">Descargar PDF</a> · <a href="./descargas/bigdata_semana5.pptx" target="_blank">Descargar PPTX</a>
 
 ### **Semana 6**
 
-Diversidad del cloud computing.
+<a href="./semanas/bigdata_semana6/#/1" target="_self">Diversidad del cloud computing.</a>
 
-Disponible cuando se active el contenido.
+<a href="./descargas/bigdata_semana6.pdf" target="_blank">Descargar PDF</a> · <a href="./descargas/bigdata_semana6.pptx" target="_blank">Descargar PPTX</a>
 
 ### **Semana 7**
 
-Principales soluciones cloud.
+<a href="./semanas/bigdata_semana7/#/1" target="_self">Principales soluciones cloud.</a>
 
-Disponible cuando se active el contenido.
+<a href="./descargas/bigdata_semana7.pdf" target="_blank">Descargar PDF</a> · <a href="./descargas/bigdata_semana7.pptx" target="_blank">Descargar PPTX</a>
 
 ### **Semana 8**
 
-Aplicaciones prácticas en las organizaciones.
+<a href="./semanas/bigdata_semana8/#/1" target="_self"Aplicaciones prácticas en las organizaciones.</a>
 
-Disponible cuando se active el contenido.
+<a href="./descargas/bigdata_semana8.pdf" target="_blank">Descargar PDF</a> · <a href="./descargas/bigdata_semana8.pptx" target="_blank">Descargar PPTX</a>
 
 <!--
 Notas del presentador:
