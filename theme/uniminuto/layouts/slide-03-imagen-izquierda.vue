@@ -95,9 +95,9 @@ import AutoFitText from '../components/AutoFitText.vue'
   position: absolute;
   z-index: 2;
   left: 50.5%;
-  top: 30%;
+  top: 28%;
   width: 39%;
-  height: 48%;
+  height: 63%;
   color: #233763 !important;
   font-family: var(--font-body, 'Atkinson Hyperlegible', Arial, sans-serif);
 }
@@ -105,6 +105,7 @@ import AutoFitText from '../components/AutoFitText.vue'
 .content-fit :deep(*) { color: #233763 !important; }
 .content-fit :deep(p) { margin: 0 0 0.7rem 0; }
 .content-fit :deep(ul) { list-style-type: disc !important; list-style-position: outside !important; margin: 0; padding-left: 1.6rem; }
+.content-fit :deep(ol) { list-style-type: decimal !important; list-style-position: outside !important; margin: 0; padding-left: 1.6rem; }
 .content-fit :deep(li) { display: list-item !important; margin-bottom: 0.5rem; }
 .content-fit :deep(li::marker) { color: #233763 !important; font-size: 1em; }
 </style>

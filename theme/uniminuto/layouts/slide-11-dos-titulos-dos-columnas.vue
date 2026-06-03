@@ -92,7 +92,8 @@ import AutoFitText from '../components/AutoFitText.vue'
 
 .column-fit :deep(*) { color: #233763 !important; }
 .column-fit :deep(p) { margin: 0 0 0.8rem 0; }
-.column-fit :deep(ul) { list-style-type: disc !important; padding-left: 1.5rem; }
+.column-fit :deep(ul) { list-style-type: disc !important; list-style-position: outside !important; margin: 0; padding-left: 1.5rem; }
+.column-fit :deep(ol) { list-style-type: decimal !important; list-style-position: outside !important; margin: 0; padding-left: 1.5rem; }
 .column-fit :deep(li) { display: list-item !important; margin-bottom: 0.5rem; }
 .column-fit :deep(pre) { font-size: 0.58em; line-height: 1.22; }
 </style>

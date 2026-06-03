@@ -72,6 +72,7 @@ import AutoFitText from '../components/AutoFitText.vue'
 
 .content-fit :deep(*) { color: #233763 !important; }
 .content-fit :deep(ul) { list-style-type: disc !important; list-style-position: outside !important; margin: 0; padding-left: 2rem; }
+.content-fit :deep(ol) { list-style-type: decimal !important; list-style-position: outside !important; margin: 0; padding-left: 2rem; }
 .content-fit :deep(li) { display: list-item !important; margin-bottom: 1rem; }
 .content-fit :deep(li::marker) { color: #233763 !important; font-size: 0.9em; }
 </style>
