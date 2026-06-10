@@ -43,12 +43,16 @@ Durante años, muchas organizaciones analizaron datos cuando ya estaban almacena
 
 En streaming, el dato se entiende como un **evento que ocurre en el tiempo**:
 
+<v-clicks animation="fade-in">
+
 * Una compra realizada.
 * Una alerta de temperatura.
 * Un clic en una plataforma.
 * Un movimiento financiero.
 * Un mensaje enviado por un sistema.
 * Un registro de un sensor IoT.
+
+</v-clicks>
 
 El reto cambia: ya no basta con guardar datos; ahora se requiere **capturarlos, moverlos, procesarlos y reaccionar** con rapidez.
 
@@ -67,22 +71,30 @@ Batch vs. streaming
 ::left::
 **Procesamiento por lotes**
 
+<v-clicks animation="fade-in">
+
 * Trabaja con datos acumulados.
 * Se ejecuta en horarios definidos.
 * Es útil para informes históricos.
 * Tolera mayor latencia.
 * Suele procesar archivos o tablas completas.
 
+</v-clicks>
+
 **Ejemplo:** consolidar ventas diarias al finalizar la jornada.
 
 ::right::
 **Procesamiento en streaming**
+
+<v-clicks animation="fade-in">
 
 * Trabaja con eventos continuos.
 * Procesa a medida que los datos llegan.
 * Favorece decisiones oportunas.
 * Requiere baja latencia.
 * Se orienta a alertas, monitoreo y reacción.
+
+</v-clicks>
 
 **Ejemplo:** detectar una transacción sospechosa en el momento en que ocurre.
 
@@ -105,6 +117,8 @@ Actividad de integración · ¿archivo, evento o alerta?
 
 **Instrucciones para estudiantes:**
 
+<v-clicks depth="2" animation="fade-in">
+
 1. El docente presenta varios casos rápidos.
 2. Cada estudiante clasifica el caso como:
    * Procesamiento por lotes.
@@ -113,6 +127,8 @@ Actividad de integración · ¿archivo, evento o alerta?
    * Alerta en tiempo real.
 3. Se comparten respuestas en voz alta o por chat.
 4. El grupo justifica brevemente por qué eligió esa categoría.
+
+</v-clicks>
 
 <!--
 Notas del presentador:
@@ -131,6 +147,8 @@ Preguntas detonadoras
 
 ::left::
 
+<v-clicks animation="fade-in">
+
 * Reporte mensual de ventas.
 * Sensor de temperatura que envía datos cada 3 segundos.
 * Confirmación de pago enviada a facturación.
@@ -140,7 +158,11 @@ Preguntas detonadoras
 * Pedido de comercio electrónico enviado a bodega.
 * Dashboard operativo actualizado cada minuto.
 
+</v-clicks>
+
 ::right::
+
+<v-clicks animation="fade-in">
 
 * ¿El dato ya está consolidado o está ocurriendo?
 * ¿La decisión puede esperar?
@@ -150,6 +172,8 @@ Preguntas detonadoras
 * ¿Hay múltiples sistemas interesados en el mismo evento?
 * ¿Qué pasa si un consumidor está temporalmente caído?
 * ¿El objetivo es informar, alertar o automatizar?
+
+</v-clicks>
 
 <!--
 Notas del presentador:
@@ -167,6 +191,8 @@ Términos clave de la semana
 <img src="/imagenes/bigdata_semana5_kafka_particiones.png" alt="Imagen de apoyo sobre transición del procesamiento por lotes al streaming de datos" />
 
 ::content::
+<v-clicks animation="fade-in">
+
 **Evento:** hecho registrado en un momento específico.
 
 **Mensaje:** unidad de información enviada entre sistemas.
@@ -182,6 +208,8 @@ Términos clave de la semana
 **Partición:** división de un tópico para escalar lectura y escritura.
 
 **Cola:** estructura donde los mensajes esperan ser procesados.
+
+</v-clicks>
 
 <!--
 Notas del presentador:
@@ -201,11 +229,15 @@ Arquitectura general de streaming
 ::content::
 Una arquitectura de streaming suele organizarse como una tubería de eventos:
 
+<v-clicks animation="fade-in">
+
 * **Fuentes:** aplicaciones, sensores, bases de datos, logs, API.
 * **Productores:** publican eventos.
 * **Broker o plataforma:** recibe, ordena, almacena y distribuye.
 * **Consumidores:** procesan, transforman o analizan.
 * **Destinos:** dashboards, alertas, data lake, bases analíticas o modelos predictivos.
+
+</v-clicks>
 
 La arquitectura permite que varios sistemas trabajen sin depender directamente unos de otros.
 
@@ -224,22 +256,30 @@ Mensajería y streaming: parecidos, pero no iguales
 ::left::
 **Mensajería**
 
+<v-clicks animation="fade-in">
+
 * Prioriza comunicación entre sistemas.
 * Se enfoca en entrega confiable.
 * Puede usar colas.
 * Suele apoyar procesos asíncronos.
 * Útil para desacoplar microservicios.
 
+</v-clicks>
+
 **Ejemplo:** enviar un pedido a inventario, facturación y despacho.
 
 ::right::
 **Streaming**
+
+<v-clicks animation="fade-in">
 
 * Prioriza flujo continuo de eventos.
 * Permite varios consumidores.
 * Conserva historial por retención.
 * Facilita analítica en tiempo real.
 * Útil para monitoreo, alertas y patrones.
+
+</v-clicks>
 
 **Ejemplo:** analizar eventos de navegación para detectar abandono de carrito.
 
@@ -263,12 +303,16 @@ Apache Kafka es una de las plataformas más reconocidas para construir arquitect
 
 Ideas centrales:
 
+<v-clicks animation="fade-in">
+
 * Los productores publican eventos en tópicos.
 * Los consumidores se suscriben a tópicos.
 * Los tópicos pueden dividirse en particiones.
 * Los eventos pueden retenerse durante un periodo configurable.
 * El orden se garantiza dentro de una partición.
 * La replicación favorece tolerancia a fallos.
+
+</v-clicks>
 
 En Big Data, Kafka se usa para ingesta, integración, analítica, monitoreo y transmisión de eventos.
 
@@ -292,12 +336,16 @@ Apache Pulsar combina características de sistemas de colas y plataformas de str
 
 Aspectos clave:
 
+<v-clicks animation="fade-in">
+
 * Modelo publicador-suscriptor.
 * Productores publican mensajes en tópicos.
 * Consumidores se suscriben y confirman procesamiento.
 * Permite consumo individual de mensajes.
 * Permite consumo como flujo de eventos.
 * Arquitectura orientada a escalabilidad y baja latencia.
+
+</v-clicks>
 
 **Idea para evaluación:** su ventaja diferencial es soportar tanto colas de mensajes como flujos de datos.
 
@@ -316,6 +364,8 @@ Apache Storm y Apache Beam
 ::left::
 **Apache Storm**
 
+<v-clicks animation="fade-in">
+
 * Procesamiento de flujos en tiempo real.
 * Usa topologías.
 * Una topología conecta spouts y bolts.
@@ -323,8 +373,12 @@ Apache Storm y Apache Beam
 * Los bolts filtran, transforman, agregan o analizan.
 * Está orientado a procesamiento continuo.
 
+</v-clicks>
+
 ::right::
 **Apache Beam**
+
+<v-clicks animation="fade-in">
 
 * Modelo unificado para batch y streaming.
 * Permite definir pipelines.
@@ -332,6 +386,8 @@ Apache Storm y Apache Beam
 * Puede ejecutarse con diferentes runners.
 * Favorece portabilidad del pipeline.
 * Se entiende como programación declarativa de canalizaciones.
+
+</v-clicks>
 
 <!--
 Notas del presentador:
@@ -348,20 +404,28 @@ Kafka Connect y Apache Flume
 ::left::
 **Kafka Connect**
 
+<v-clicks animation="fade-in">
+
 * Herramienta para integrar Kafka con otros sistemas.
 * Usa conectores de origen y destino.
 * Facilita mover datos entre bases, archivos, sistemas analíticos y tópicos Kafka.
 * Reduce código repetitivo de integración.
 * Es clave en arquitecturas de ingesta y sincronización.
 
+</v-clicks>
+
 ::right::
 **Apache Flume**
+
+<v-clicks animation="fade-in">
 
 * Diseñado para recolectar, agregar y mover grandes volúmenes de datos.
 * Usa fuentes, canales y sumideros.
 * Puede enviar datos hacia HDFS u otros destinos.
 * Incluye conectores como Twitter Source experimental y Kafka Source.
 * Históricamente se asocia con ingestión hacia ecosistemas Hadoop.
+
+</v-clicks>
 
 <!--
 Notas del presentador:
@@ -381,20 +445,28 @@ Apache Cassandra
 ::left::
 RabbitMQ es una tecnología de mensajería.
 
+<v-clicks animation="fade-in">
+
 * Trabaja con colas.
 * Permite comunicación asíncrona.
 * Usa exchanges para enrutar mensajes.
 * Favorece desacoplamiento entre aplicaciones.
 * Es útil para tareas de fondo, pedidos, notificaciones y microservicios.
 
+</v-clicks>
+
 ::right::
 Apache Cassandra no es un sistema de mensajería.
+
+<v-clicks animation="fade-in">
 
 * Es una base de datos NoSQL distribuida.
 * Se orienta a escalabilidad y alta disponibilidad.
 * Almacena grandes volúmenes de datos.
 * No cumple el rol de broker de mensajes.
 * Puede ser destino o fuente de datos, pero no cola de mensajería.
+
+</v-clicks>
 
 <!--
 Notas del presentador:
@@ -413,11 +485,15 @@ Azure Stream Analytics es una plataforma administrada de Microsoft para analíti
 
 Permite:
 
+<v-clicks animation="fade-in">
+
 * Procesar flujos de datos en movimiento.
 * Analizar eventos de fuentes conectadas.
 * Generar salidas hacia reportes, alertas o almacenamiento.
 * Construir soluciones de monitoreo sin administrar toda la infraestructura.
 * Conectar escenarios de IoT, telemetría, fraude, logs y tableros operativos.
+
+</v-clicks>
 
 **Idea para evaluación:** entre las opciones propuestas, Azure Stream Analytics es la plataforma de streaming desarrollada por Microsoft.
 
@@ -439,6 +515,8 @@ Ejemplo aplicado: comercio electrónico
 ::content::
 Una tienda virtual puede producir eventos como:
 
+<v-clicks animation="fade-in">
+
 * Usuario inicia sesión.
 * Producto agregado al carrito.
 * Pago rechazado.
@@ -447,7 +525,11 @@ Una tienda virtual puede producir eventos como:
 * Pedido enviado.
 * Reclamo creado.
 
+</v-clicks>
+
 Con streaming y mensajería, cada evento puede activar respuestas:
+
+<v-clicks animation="fade-in">
 
 * Actualizar dashboard.
 * Enviar notificación.
@@ -455,6 +537,8 @@ Con streaming y mensajería, cada evento puede activar respuestas:
 * Reservar inventario.
 * Generar factura.
 * Alimentar un modelo predictivo.
+
+</v-clicks>
 
 <!--
 Notas del presentador:
@@ -474,6 +558,8 @@ Ejemplo aplicado: sensores e IoT
 ::content::
 En un sistema IoT, los dispositivos pueden emitir datos cada pocos segundos:
 
+<v-clicks animation="fade-in">
+
 * Temperatura.
 * Humedad.
 * Consumo eléctrico.
@@ -482,7 +568,11 @@ En un sistema IoT, los dispositivos pueden emitir datos cada pocos segundos:
 * Ubicación.
 * Estado del dispositivo.
 
+</v-clicks>
+
 Una arquitectura de streaming permite:
+
+<v-clicks animation="fade-in">
 
 * Detectar anomalías.
 * Generar alertas.
@@ -490,6 +580,8 @@ Una arquitectura de streaming permite:
 * Guardar histórico.
 * Automatizar mantenimiento.
 * Prever fallas operativas.
+
+</v-clicks>
 
 <!--
 Notas del presentador:
@@ -501,10 +593,10 @@ layout: slide-08-titulo-texto
 ---
 
 ::title::
-Relación con la evaluación de la semana
-
+El ecosistema de streaming y mensajería:
 ::content::
-La evaluación revisa conceptos esenciales del ecosistema de streaming y mensajería:
+
+<v-clicks animation="fade-in">
 
 * Pulsar como plataforma que combina colas de mensajes y flujos de datos.
 * Storm como arquitectura basada en topologías de procesamiento.
@@ -514,6 +606,8 @@ La evaluación revisa conceptos esenciales del ecosistema de streaming y mensaje
 * Kafka como plataforma distribuida con tópicos, particiones, durabilidad y orden por partición.
 * RabbitMQ como cola de mensajería.
 * Flume como herramienta de ingestión con conectores de fuentes.
+
+</v-clicks>
 
 <!--
 Notas del presentador:
@@ -530,6 +624,8 @@ Claves conceptuales para responder mejor
 ::left::
 **Asociaciones fuertes**
 
+<v-clicks animation="fade-in">
+
 * Kafka → streaming distribuido.
 * Pulsar → colas y streams.
 * Storm → topologías.
@@ -539,8 +635,12 @@ Claves conceptuales para responder mejor
 * RabbitMQ → cola de mensajería.
 * Cassandra → base de datos NoSQL distribuida.
 
+</v-clicks>
+
 ::right::
 **Distractores frecuentes**
+
+<v-clicks animation="fade-in">
 
 * Confundir base de datos con broker.
 * Creer que todo Big Data es batch.
@@ -549,6 +649,8 @@ Claves conceptuales para responder mejor
 * Confundir Beam con MapReduce.
 * Olvidar que Kafka conserva orden dentro de una partición, no necesariamente en todo el sistema.
 * Creer que Flume solo trabaja con archivos.
+
+</v-clicks>
 
 <!--
 Notas del presentador:
@@ -565,6 +667,8 @@ Respuestas conceptuales orientadoras
 ::content::
 Para estudiar la evaluación, tenga presente:
 
+<v-clicks animation="fade-in">
+
 * Apache Pulsar destaca por soportar tanto colas de mensajes como flujos de datos.
 * Apache Storm utiliza topologías de procesamiento.
 * Apache Beam permite definir pipelines mediante un modelo declarativo y portable.
@@ -574,6 +678,8 @@ Para estudiar la evaluación, tenga presente:
 * Azure Stream Analytics corresponde a Microsoft.
 * RabbitMQ es una cola de mensajería.
 * En Apache Flume, Twitter aparece como fuente experimental documentada.
+
+</v-clicks>
 
 <!--
 Notas del presentador:
@@ -651,11 +757,15 @@ Propósito de la práctica
 
 **Resultado esperado:**
 
+<v-clicks animation="fade-in">
+
 * Comprender el flujo productor → cola → consumidor.
 * Observar latencia de procesamiento.
 * Detectar alertas por reglas simples.
 * Generar un archivo CSV con eventos procesados.
 * Relacionar la simulación con conceptos como Kafka, RabbitMQ, Pulsar y Storm.
+
+</v-clicks>
 
 <!--
 Notas del presentador:
@@ -672,24 +782,38 @@ Componentes necesarios y herramienta
 ::left::
 **Equipo**
 
+<v-clicks animation="fade-in">
+
 * Computador con Windows 11 Pro.
 * Acceso a PowerShell o Terminal.
 * Permisos para instalar Python si no está disponible.
 * Carpeta de trabajo local.
 
+</v-clicks>
+
 **Software libre**
+
+<v-clicks animation="fade-in">
 
 * Python 3.12 o superior.
 * Editor de texto: IDLE, Thonny, VS Code o cualquier editor disponible.
 * No se requieren librerías externas.
 
+</v-clicks>
+
 ::right::
 **Archivos de trabajo**
+
+<v-clicks animation="fade-in">
 
 * `streaming_mensajeria.py`
 * `stream_resultados.csv`
 
+</v-clicks>
+
 **Conceptos simulados**
+
+<v-clicks animation="fade-in">
 
 * Productor.
 * Cola de mensajes.
@@ -699,6 +823,8 @@ Componentes necesarios y herramienta
 * Ventana de análisis.
 * Alerta.
 * Persistencia en CSV.
+
+</v-clicks>
 
 <!--
 Notas del presentador:
@@ -761,6 +887,8 @@ Conexiones sugeridas de la práctica
 ::content::
 La simulación representa esta conexión lógica:
 
+<v-clicks animation="fade-in">
+
 **Fuente de eventos**
 
 Genera ventas, sensores y acciones de usuario.
@@ -780,6 +908,8 @@ Lee, procesa, calcula métricas y detecta alertas.
 **Salida**
 
 Imprime resultados en consola y guarda `stream_resultados.csv`.
+
+</v-clicks>
 
 <!--
 Notas del presentador:
@@ -1072,9 +1202,13 @@ python streaming_mensajeria.py
 
 4. Identificar eventos con alerta:
 
+<v-clicks animation="fade-in">
+
 * `ALERTA_VENTA_ALTA`
 * `ALERTA_TEMPERATURA`
 * `ALERTA_ABANDONO_CARRITO`
+
+</v-clicks>
 
 5. Abrir el archivo generado:
 
@@ -1099,22 +1233,32 @@ Producto esperado y evidencias
 ::left::
 **Producto esperado**
 
+<v-clicks animation="fade-in">
+
 * Script ejecutado sin errores.
 * Consola con eventos publicados y procesados.
 * Archivo `stream_resultados.csv`.
 * Al menos una alerta generada.
 * Resumen final con métricas de latencia.
 
+</v-clicks>
+
 **Evidencia visible**
+
+<v-clicks animation="fade-in">
 
 * Captura de pantalla de la consola.
 * Archivo CSV abierto.
 * Identificación de una alerta y su causa.
 
+</v-clicks>
+
 ::right::
 **Interpretación esperada**
 
 El estudiante debe poder explicar:
+
+<v-clicks animation="fade-in">
 
 * Qué componente actúa como productor.
 * Qué componente representa la cola.
@@ -1122,6 +1266,8 @@ El estudiante debe poder explicar:
 * Qué significa la latencia.
 * Por qué se genera una alerta.
 * Cómo se relaciona la práctica con Kafka, RabbitMQ o Pulsar.
+
+</v-clicks>
 
 <!--
 Notas del presentador:
@@ -1138,6 +1284,8 @@ Preguntas de análisis para la práctica
 ::content::
 Después de ejecutar el código, responda:
 
+<v-clicks animation="fade-in">
+
 1. ¿Qué representa el productor en un caso empresarial real?
 2. ¿Qué pasaría si el consumidor procesa más lento que el productor?
 3. ¿Por qué la cola ayuda a desacoplar componentes?
@@ -1146,6 +1294,8 @@ Después de ejecutar el código, responda:
 6. ¿Dónde ubicaría Kafka, RabbitMQ o Pulsar dentro de esta simulación?
 7. ¿Qué métrica adicional agregaría para mejorar la toma de decisiones?
 8. ¿Qué dato del CSV serviría para construir un dashboard?
+
+</v-clicks>
 
 <!--
 Notas del presentador:
@@ -1162,14 +1312,20 @@ Socialización breve · 7 minutos
 ::left::
 **Dinámica sugerida**
 
+<v-clicks animation="fade-in">
+
 * Tres estudiantes comparten una alerta encontrada.
 * Un estudiante explica el papel de la cola.
 * Un estudiante propone una mejora al sistema.
 * El docente conecta las respuestas con la evaluación.
 * El grupo identifica qué herramienta real se parecería más al caso.
 
+</v-clicks>
+
 ::right::
 **Criterios de participación**
+
+<v-clicks animation="fade-in">
 
 * Claridad conceptual.
 * Relación con el ejemplo.
@@ -1177,6 +1333,8 @@ Socialización breve · 7 minutos
 * Capacidad de explicar productor, cola y consumidor.
 * Identificación de una decisión empresarial posible.
 * Conexión con streaming o mensajería.
+
+</v-clicks>
 
 <!--
 Notas del presentador:
@@ -1192,6 +1350,8 @@ Errores frecuentes al estudiar streaming y mensajería
 
 ::content::
 
+<v-clicks animation="fade-in">
+
 * Pensar que todos los sistemas de Big Data hacen lo mismo.
 * Confundir almacenamiento distribuido con mensajería.
 * Creer que una cola y un tópico son idénticos.
@@ -1200,6 +1360,8 @@ Errores frecuentes al estudiar streaming y mensajería
 * Asociar Kafka únicamente con colas tradicionales.
 * Confundir procesamiento de streams con visualización de datos.
 * Memorizar herramientas sin comprender el problema que resuelven.
+
+</v-clicks>
 
 <!--
 Notas del presentador:
@@ -1219,6 +1381,8 @@ Cierre académico
 ::left::
 Preguntas orientadoras para organizar las dudas:
 
+<v-clicks animation="fade-in">
+
 * ¿Qué diferencia hay entre cola y tópico?
 * ¿Kafka reemplaza una base de datos?
 * ¿Pulsar y Kafka cumplen el mismo rol?
@@ -1227,8 +1391,12 @@ Preguntas orientadoras para organizar las dudas:
 * ¿Cuándo conviene Kafka Connect?
 * ¿Por qué Cassandra no es sistema de mensajería?
 
+</v-clicks>
+
 ::right::
 Ideas centrales de la sesión:
+
+<v-clicks animation="fade-in">
 
 * Los datos también pueden analizarse mientras se mueven.
 * La mensajería desacopla componentes.
@@ -1236,6 +1404,8 @@ Ideas centrales de la sesión:
 * Kafka, Pulsar, Storm y Beam tienen roles distintos.
 * La evaluación se responde mejor entendiendo categorías.
 * La práctica mostró el patrón productor, cola, consumidor y alerta.
+
+</v-clicks>
 
 <!--
 Notas del presentador:
@@ -1254,11 +1424,15 @@ Antes de finalizar, se recuerda a los estudiantes la importancia de diligenciar 
 
 Su participación permite:
 
+<v-clicks animation="fade-in">
+
 * Fortalecer el proceso académico.
 * Identificar oportunidades de mejora.
 * Valorar la pertinencia de las estrategias didácticas.
 * Retroalimentar el acompañamiento docente.
 * Contribuir a la calidad del curso y del programa.
+
+</v-clicks>
 
 <!--
 Notas del presentador:
@@ -1308,6 +1482,8 @@ Fuentes oficiales de apoyo
 ::content::
 Para ampliar la sesión, se podrían consultar fuentes oficiales y técnicas sobre:
 
+<v-clicks animation="fade-in">
+
 * Apache Kafka y event streaming.
 * Apache Pulsar y su modelo de mensajería.
 * Apache Storm y topologías.
@@ -1316,6 +1492,8 @@ Para ampliar la sesión, se podrían consultar fuentes oficiales y técnicas sob
 * RabbitMQ, exchanges y colas.
 * Apache Cassandra como base de datos NoSQL distribuida.
 * Azure Stream Analytics como servicio administrado de analítica en tiempo real.
+
+</v-clicks>
 
 <!--
 Notas del presentador:

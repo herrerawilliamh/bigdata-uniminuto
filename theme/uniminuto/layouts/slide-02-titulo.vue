@@ -1,9 +1,12 @@
 <script setup>
+import AutoReveal from '../components/AutoReveal.vue'
 import AutoFitText from '../components/AutoFitText.vue'
 </script>
 
 <template>
   <div class="slide-02-layout">
+    <AutoReveal />
+
     <img
       class="slide-bg"
       src="/fondos/slide-02-titulo.png"

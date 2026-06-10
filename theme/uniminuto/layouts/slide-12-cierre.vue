@@ -1,5 +1,11 @@
+<script setup>
+import AutoReveal from '../components/AutoReveal.vue'
+</script>
+
 <template>
   <div class="slide-layout">
+    <AutoReveal />
+
     <img
       class="slide-bg"
       src="/fondos/slide-06-cierre.png"

@@ -1,9 +1,12 @@
 <script setup>
+import AutoReveal from '../components/AutoReveal.vue'
 import AutoFitText from '../components/AutoFitText.vue'
 </script>
 
 <template>
   <div class="portada-layout">
+    <AutoReveal />
+
     <img
       class="portada-bg"
       src="/fondos/slide-01-portada.png"
