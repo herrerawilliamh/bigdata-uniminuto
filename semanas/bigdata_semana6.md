@@ -1490,18 +1490,6 @@ Como no se incluye un enlace verificado en esta diapositiva, el docente puede re
 -->
 
 ---
-layout: slide-02-titulo
----
-
-::title::
-Imágenes sugeridas para generar en ChatGPT
-
-<!--
-Notas del presentador:
-Indicar que las siguientes diapositivas contienen prompts para generar imágenes de apoyo. Estas imágenes pueden reemplazar el recurso genérico favicon.png en futuras versiones de la presentación, siempre que se conserven criterios de claridad, pertinencia académica y coherencia visual institucional.
--->
-
----
 layout: slide-12-cierre
 ---
 
