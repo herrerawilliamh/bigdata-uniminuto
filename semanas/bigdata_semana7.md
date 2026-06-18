@@ -50,7 +50,7 @@ layout: slide-03-imagen-izquierda
 ---
 
 ::title::
-Contextualización: ¿por qué la nube es central en Big Data?
+¿Por qué la nube es central en Big Data?
 
 ::image:: 
 <img src="/imagenes/bigdata-semana7-ecosistema-cloud-multicloud.png" alt="Imagen de apoyo sobre ecosistemas cloud para Big Data" />
@@ -167,45 +167,22 @@ Modelos de servicio
 Modelos de implementación
 
 ::left::
-IaaS:
+IaaS: Máquinas virtuales, redes, discos y capacidad flexible. Mayor control, mayor responsabilidad operativa.
 
-* Máquinas virtuales, redes, discos y capacidad flexible.
-* Mayor control, mayor responsabilidad operativa.
+PaaS: Despliegue de aplicaciones sin administrar toda la infraestructura.  **Ejemplo conceptual:** Azure App Service.
 
-PaaS:
+Serverless: Ejecución de funciones o componentes bajo demanda. El proveedor administra servidores y escalado.
 
-* Despliegue de aplicaciones sin administrar toda la infraestructura.
-* Ejemplo conceptual: Azure App Service.
-
-Serverless:
-
-* Ejecución de funciones o componentes bajo demanda.
-* El proveedor administra servidores y escalado.
-
-SaaS:
-
-* Aplicaciones listas para usar.
-* El usuario configura y consume el servicio.
+SaaS: Aplicaciones listas para usar.El usuario configura y consume el servicio.
 
 ::right::
-Nube pública:
+Nube pública: Infraestructura compartida del proveedor. Alta elasticidad y amplio catálogo.
 
-* Infraestructura compartida del proveedor.
-* Alta elasticidad y amplio catálogo.
+Nube privada: Mayor control sobre infraestructura y políticas.
 
-Nube privada:
+Nube híbrida: Integra recursos locales, privados y públicos. Útil cuando hay regulación, datos sensibles o transición gradual.
 
-* Mayor control sobre infraestructura y políticas.
-
-Nube híbrida:
-
-* Integra recursos locales, privados y públicos.
-* Útil cuando hay regulación, datos sensibles o transición gradual.
-
-Multicloud:
-
-* Uso coordinado de varios proveedores.
-* Reduce dependencia, pero aumenta complejidad.
+Multicloud: Uso coordinado de varios proveedores. Reduce dependencia, pero aumenta complejidad.
 
 <!--
 Notas del presentador:
@@ -977,35 +954,6 @@ El segundo video debe enfocarse en autoescalado y elasticidad. Este es el recurs
 El tercer video debe abordar BigQuery o data warehouse en la nube. Conviene que explique que BigQuery es un servicio administrado para análisis de grandes volúmenes de datos mediante SQL o GoogleSQL. Esto ayuda a conectar la semana con Big Data y no solo con infraestructura cloud. Si no se encuentra un video verificado de menos de cinco minutos, mantenga el espacio marcado para agregar enlace verificado. Es preferible dejar el marcador que inventar enlaces o usar videos demasiado largos.
 
 Indique que los criterios de curaduría son académicos: duración razonable, claridad conceptual, pertinencia para pregrado, relación directa con la temática, ausencia de publicidad excesiva y calidad técnica aceptable. También se debe verificar que el enlace funcione y que el contenido no esté desactualizado de forma crítica. En cloud, los nombres de servicios cambian; por ejemplo, AI Platform pasó a Vertex AI. Por tanto, un video puede ser útil aunque tenga un nombre anterior, siempre que el docente haga la aclaración correspondiente durante la clase.
--->
-
----
-layout: slide-08-titulo-texto
----
-
-::title::
-Fuentes de consulta para el docente
-
-::content::
-Documentación oficial recomendada:
-
-* AWS EC2 Auto Scaling: escalado automático de instancias según políticas, programación y verificaciones de salud. ([AWS Documentation][1])
-* AWS RDS y Aurora: bases de datos relacionales administradas en la nube. ([AWS Documentation][2])
-* AWS Lambda: ejecución de código sin administrar servidores; modelo serverless. ([AWS Documentation][3])
-* Azure App Service: hospedaje y escalado de aplicaciones web. ([Microsoft Learn][4])
-* Google Cloud Dataproc / Managed Service for Apache Spark: clústeres Spark y Hadoop administrados. ([Google Cloud Documentation][5])
-* BigQuery GoogleSQL: consultas SQL para análisis de datos. ([Google Cloud Documentation][6])
-* Vertex AI: entrenamiento y despliegue de modelos; AI Platform Unified pasó a Vertex AI. ([Google Cloud Documentation][7])
-
-<!--
-Notas del presentador:
-Esta diapositiva funciona como respaldo académico para el docente. No es necesario leer todas las fuentes durante la clase, pero sí conviene mencionarlas como documentación oficial para quienes deseen profundizar. En cursos de tecnología, especialmente cloud, la documentación oficial es más confiable que blogs desactualizados, porque los proveedores cambian nombres, interfaces, precios, regiones y características con frecuencia. Por ejemplo, la evaluación puede referirse a AI Platform, pero la documentación actual de Google Cloud señala que AI Platform Unified pasó a Vertex AI. Esta diferencia debe explicarse con cuidado para que el estudiante no piense que el aula virtual está completamente desconectada de la realidad, sino que comprenda que los ecosistemas cloud evolucionan.
-
-Explique brevemente cómo usar estas fuentes. La documentación de AWS EC2 Auto Scaling ayuda a profundizar en políticas de escalado, verificaciones de salud y grupos de Auto Scaling. Es pertinente para el caso de comercio electrónico y para discutir por qué el autoescalado es una característica clave ante picos de tráfico. La documentación de RDS y Aurora sirve para diferenciar bases relacionales de otros servicios como DynamoDB o Redshift. Lambda ayuda a entender serverless y por qué ejecutar código sin administrar servidores no significa que no existan servidores, sino que el proveedor abstrae su gestión.
-
-En Azure, App Service conecta directamente con despliegue y escalado de aplicaciones web. En Google Cloud, Dataproc o Managed Service for Apache Spark permite hablar de Spark y Hadoop administrados, mientras BigQuery y GoogleSQL conectan con data warehouse y consultas analíticas. Vertex AI permite actualizar el vocabulario de machine learning.
-
-Sugiera a los estudiantes no memorizar documentación completa, sino leer con una pregunta guía: ¿qué problema resuelve el servicio?, ¿qué administra el proveedor?, ¿qué administra el cliente?, ¿cómo escala?, ¿qué costos genera?, ¿qué riesgos de seguridad aparecen? Esta estrategia convierte la documentación técnica en fuente de aprendizaje y argumento para el foro.
 -->
 
 ---
