@@ -1,6 +1,6 @@
 ---
 theme: ./theme/uniminuto
-title: Big Data — Semana 7
+title: Big Data — Semana 7 — Cloud computing para Big Data
 favicon: /favicon.png
 codeCopy: true
 transition: fade
@@ -9,4 +9,3 @@ drawings:
   persist: false
 src: ./semanas/bigdata_semana7.md
 ---
-

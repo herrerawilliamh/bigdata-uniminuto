@@ -1,6 +1,6 @@
 ---
 theme: ./theme/uniminuto
-title: Big Data — Semana 3
+title: Big Data — Semana 3 — Sistemas de almacenamiento distribuido
 favicon: /favicon.png
 codeCopy: true
 transition: fade
@@ -9,4 +9,3 @@ drawings:
   persist: false
 src: ./semanas/bigdata_semana3.md
 ---
-

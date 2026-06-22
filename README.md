@@ -1,254 +1,494 @@
-# OpenClass Big Data · Presentaciones Slidev
+# Open Class UNIMINUTO Template
 
-Repositorio para diseñar, organizar, exportar y publicar presentaciones académicas de Open Class usando **Slidev**, una plantilla institucional personalizada y archivos Markdown reutilizables por semana.
+Plantilla base para construir presentaciones académicas tipo **Open Class** con Slidev, tema institucional UNIMINUTO, semanas independientes, portal principal, exportación a PDF/PPTX y despliegue automático en GitHub Pages.
 
-El proyecto está pensado para sesiones universitarias de 90 minutos, con una presentación web navegable, archivos descargables y publicación automática en GitHub Pages.
-
----
-
-## 1. Propósito
-
-Este repositorio permite:
-
-- Mantener una plantilla institucional estable.
-- Crear un portal principal del curso.
-- Trabajar cada semana como una presentación independiente.
-- Compilar el curso completo como sitio estático.
-- Exportar presentaciones a PDF y PPTX.
-- Publicar el sitio en GitHub Pages.
-- Activar progresivamente solo las semanas listas.
-- Evitar errores de rutas, diapositivas blancas y exportaciones fallidas.
+Esta plantilla está pensada para cursos universitarios organizados por semanas. Cada semana se desarrolla como una presentación Slidev independiente, pero todas se integran en un portal principal generado automáticamente.
 
 ---
 
-## 2. Arquitectura del proyecto
+## 1. ¿Qué contiene esta plantilla?
 
-El proyecto usa tres niveles de archivos Markdown:
+La estructura general del proyecto es:
 
-```txt
-slides.md                       → Portal principal del curso
-bigdata_semanaN.md              → Lanzador raíz de cada semana
-semanas/bigdata_semanaN.md      → Contenido real de cada presentación
-```
-
-La regla central es:
-
-```txt
-slides.md funciona como portal.
-bigdata_semanaN.md importa una semana.
-semanas/bigdata_semanaN.md contiene las diapositivas reales.
-```
-
-Esto permite que los recursos públicos, fondos, imágenes, videos y estilos funcionen correctamente desde `public/`.
-
----
-
-## 3. Estructura recomendada
-
-```txt
-openclass-bigdata/
-├─ slides.md
-├─ bigdata_semana1.md
-├─ bigdata_semana2.md
-├─ bigdata_semana3.md
-├─ bigdata_semana4.md
-├─ bigdata_semana5.md
-├─ bigdata_semana6.md
-├─ bigdata_semana7.md
-├─ bigdata_semana8.md
-├─ semanas/
-│  ├─ bigdata_semana1.md
-│  ├─ bigdata_semana2.md
-│  ├─ bigdata_semana3.md
-│  ├─ bigdata_semana4.md
-│  ├─ bigdata_semana5.md
-│  ├─ bigdata_semana6.md
-│  ├─ bigdata_semana7.md
-│  └─ bigdata_semana8.md
-├─ public/
-│  ├─ fondos/
-│  ├─ imagenes/
-│  ├─ videos/
-│  └─ descargas/
-├─ scripts/
-│  ├─ decks.mjs
-│  ├─ build-site.mjs
-│  ├─ build-incremental.mjs
-│  ├─ export-downloads.mjs
-│  ├─ export-incremental.mjs
-│  ├─ dev-all.mjs
-│  └─ publicar.mjs
-├─ theme/
-│  └─ uniminuto/
-│     ├─ package.json
-│     ├─ components/
-│     ├─ layouts/
-│     └─ styles/
+```text
+.
 ├─ .github/
 │  └─ workflows/
 │     └─ deploy.yml
+├─ openclass.config.json
 ├─ package.json
-├─ package-lock.json
-├─ .gitignore
-└─ README.md
+├─ slides.md
+├─ plantillas/
+│  ├─ launcher.md
+│  └─ semana.md
+├─ public/
+│  ├─ favicon.png
+│  ├─ fondos/
+│  ├─ imagenes/
+│  ├─ descargas/
+│  └─ videos/
+├─ scripts/
+│  ├─ generar-desde-config.mjs
+│  ├─ semana.mjs
+│  ├─ decks.mjs
+│  ├─ build-site.mjs
+│  ├─ export-downloads.mjs
+│  ├─ preparar-github-pages.mjs
+│  ├─ publicar.mjs
+│  └─ nuevo-curso.mjs
+├─ semanas/
+└─ theme/
+   └─ uniminuto/
 ```
 
-Actualmente están listas en `semanas/` las semanas 1, 2 y 3. Las semanas 4 a 8 tienen lanzador raíz, pero deben completarse dentro de `semanas/` antes de activarse.
-
 ---
 
-## 4. Rol de cada archivo Markdown
+## 2. Recursos visuales obligatorios
 
-### 4.1. `slides.md`
+El tema institucional requiere estos archivos:
 
-Es el portal principal del curso.
-
-Debe incluir:
-
-- Portada del curso.
-- Descripción general.
-- Ruta de aprendizaje.
-- Enlaces a las semanas disponibles.
-- Enlaces de descarga a PDF o PPTX.
-
-Ejemplo de inicio correcto:
-
-```md
----
-theme: ./theme/uniminuto
-title: Big Data — Open Class
-transition: fade
-routerMode: hash
-drawings:
-  persist: false
-layout: slide-01-portada
----
-
-::title::
-Big Data
-
-::week::
-Open Class
-
-::date::
-2026
+```text
+public/fondos/slide-01-portada.png
+public/fondos/slide-05-template.png
+public/fondos/slide-06-cierre.png
+public/imagenes/avion.png
+public/imagenes/favicon.png
+public/favicon.png
 ```
 
-No se debe crear una diapositiva vacía antes de la portada.
+`public/favicon.png` se usa como favicon del navegador.
+
+`public/imagenes/favicon.png` puede usarse como imagen institucional dentro de las diapositivas.
+
+Las imágenes académicas propias de cada curso deben ubicarse preferiblemente en:
+
+```text
+public/imagenes/
+```
 
 ---
 
-### 4.2. `bigdata_semanaN.md`
+## 3. Concepto general de funcionamiento
 
-Son los lanzadores raíz.
+La fuente principal de configuración es:
+
+```text
+openclass.config.json
+```
+
+Desde ese archivo se definen:
+
+* Nombre corto del curso.
+* Nombre completo del curso.
+* Descripción general.
+* Número total de semanas.
+* Semanas activas.
+* Título, fecha, tema y actividad de cada semana.
+
+Las semanas activas se controlan en:
+
+```json
+"generation": {
+  "activeWeeks": [1, 2, 3]
+}
+```
+
+Solo las semanas incluidas en `activeWeeks` aparecen en el portal, se exportan y se construyen para GitHub Pages.
+
+---
+
+## 4. Archivos principales
+
+### `slides.md`
+
+Portal principal del curso. Se genera automáticamente con:
+
+```bash
+npm run config
+```
+
+No se recomienda editarlo manualmente, porque puede ser reemplazado por el generador.
+
+### `curso_semanaN.md`
+
+Archivo lanzador de cada semana. Incluye la configuración global de Slidev y referencia el contenido real desde `semanas/`.
 
 Ejemplo:
 
-```txt
-bigdata_semana1.md
+```text
+demo_semana1.md
 ```
 
-Contenido recomendado:
+### `semanas/curso_semanaN.md`
 
-```md
----
-theme: ./theme/uniminuto
-title: Big Data — Semana 1
-transition: fade
-routerMode: hash
-drawings:
-  persist: false
-src: ./semanas/bigdata_semana1.md
----
+Contenido académico real de la semana.
+
+Ejemplo:
+
+```text
+semanas/demo_semana1.md
 ```
 
-Este archivo no debe tener diapositivas adicionales. Solo importa el contenido real ubicado en `semanas/`.
+Este archivo no se sobrescribe por defecto. Eso permite conservar el contenido diseñado por el docente.
+
+### `plantillas/semana.md`
+
+Plantilla base usada al crear una semana nueva. Debe incluir ejemplos de todos los layouts disponibles para que funcione como catálogo inicial.
+
+### `plantillas/launcher.md`
+
+Plantilla del archivo lanzador raíz de cada semana.
 
 ---
 
-### 4.3. `semanas/bigdata_semanaN.md`
+## 5. Caso de uso 1: crear un curso desde GitHub Template
 
-Contiene la presentación real de cada semana.
+Este caso se recomienda cuando se quiere iniciar un curso directamente desde GitHub.
 
-Debe iniciar directamente con un layout:
+### Paso 1. Crear repositorio desde la plantilla
 
-```md
----
-layout: slide-01-portada
----
+En GitHub:
 
-::title::
-Big Data
-
-::week::
-Semana 1
-
-::date::
-Mayo 04, 2026
+```text
+Use this template → Create a new repository
 ```
 
-No debe incluir configuración global como:
+Nombre sugerido:
 
-```md
-theme:
-title:
-transition:
-routerMode:
-drawings:
+```text
+openclass-nombrecurso
 ```
 
-Esa configuración pertenece únicamente al lanzador raíz.
+Ejemplos:
+
+```text
+openclass-iot
+openclass-bigdata
+openclass-gestionseguridad
+```
+
+### Paso 2. Clonar el repositorio
+
+```bash
+git clone https://github.com/TU_USUARIO/openclass-nombrecurso.git
+cd openclass-nombrecurso
+```
+
+### Paso 3. Instalar dependencias
+
+```bash
+npm install
+```
+
+### Paso 4. Editar `openclass.config.json`
+
+Cambiar:
+
+```json
+{
+  "course": {
+    "shortName": "nombrecurso",
+    "fullName": "Nombre completo del curso",
+    "year": "2026",
+    "description": "Descripción general del curso.",
+    "openClassLabel": "Open Class"
+  }
+}
+```
+
+### Paso 5. Generar estructura del curso
+
+```bash
+npm run config
+```
+
+### Paso 6. Activar semanas
+
+```bash
+npm run semana -- 1
+npm run semana -- 2
+npm run semana -- 3
+```
+
+### Paso 7. Probar localmente
+
+```bash
+npm run dev
+```
+
+Para una semana específica:
+
+```bash
+npm run dev:s1
+```
+
+### Paso 8. Construir para GitHub Pages
+
+```bash
+npm run pages:build
+```
+
+### Paso 9. Publicar
+
+```bash
+git add -A
+git commit -m "Publicación inicial Open Class"
+git push
+```
+
+En GitHub:
+
+```text
+Settings → Pages → Build and deployment → Source: GitHub Actions
+```
 
 ---
 
-## 5. Fuente de control de semanas
+## 6. Caso de uso 2: crear un curso con npm
 
-El archivo más importante para construir y exportar el sitio es:
+Este caso se recomienda cuando se quiere crear el curso desde consola usando el generador publicado en npm.
 
-```txt
-scripts/decks.mjs
+### Paso 1. Crear carpeta del curso
+
+```bash
+mkdir openclass-nombrecurso
+cd openclass-nombrecurso
 ```
 
-Allí se define qué presentaciones están activas, cuáles se construyen y cuáles se exportan.
+### Paso 2. Ejecutar el generador
 
-Formato usado en este proyecto:
-
-```js
-export const decks = [
-  {
-    name: "openclass-bigdata",
-    entry: "slides.md",
-    out: "dist",
-    base: SITE_BASE,
-    exportable: true,
-  },
-  {
-    name: "bigdata_semana1",
-    entry: "bigdata_semana1.md",
-    out: "dist/semanas/bigdata_semana1",
-    base: withBase("semanas/bigdata_semana1/"),
-    exportable: true,
-  },
-];
+```bash
+npm create openclass-uniminuto@latest .
 ```
 
-Para publicar una nueva semana:
+### Paso 3. Instalar dependencias
 
-1. Crear o completar `semanas/bigdata_semanaN.md`.
-2. Revisar que la semana funcione localmente.
-3. Agregar o descomentar la semana en `scripts/decks.mjs`.
-4. Dejar `exportable: true` solo si también debe generar PDF y PPTX.
-5. Hacer commit y push.
+```bash
+npm install
+```
 
-Esto evita que una semana incompleta detenga todo el despliegue.
+### Paso 4. Configurar el curso
+
+Puedes editar manualmente:
+
+```text
+openclass.config.json
+```
+
+o ejecutar:
+
+```bash
+npm run nuevo
+```
+
+### Paso 5. Generar curso
+
+```bash
+npm run config
+```
+
+### Paso 6. Probar y construir
+
+```bash
+npm run dev
+npm run pages:build
+```
+
+### Paso 7. Crear repositorio remoto
+
+```bash
+git init
+git branch -M main
+git remote add origin https://github.com/TU_USUARIO/openclass-nombrecurso.git
+git add -A
+git commit -m "Publicación inicial Open Class"
+git push -u origin main
+```
 
 ---
 
-## 6. Layouts disponibles
+## 7. Caso de uso 3: crear desde GitHub Template y sincronizar con npm
 
-La plantilla institucional incluye estos layouts:
+Este caso se recomienda cuando ya existe un repositorio creado desde la plantilla de GitHub, pero se quiere actualizar después con la versión más reciente publicada en npm.
 
-```txt
+### Paso 1. Crear el repositorio desde GitHub Template
+
+Usar:
+
+```text
+Use this template → Create a new repository
+```
+
+### Paso 2. Clonar localmente
+
+```bash
+git clone https://github.com/TU_USUARIO/openclass-nombrecurso.git
+cd openclass-nombrecurso
+```
+
+### Paso 3. Instalar dependencias
+
+```bash
+npm install
+```
+
+### Paso 4. Actualizar infraestructura desde npm
+
+```bash
+npm create openclass-uniminuto@latest . -- --update-theme
+```
+
+Este comando debe actualizar:
+
+* Tema institucional.
+* Layouts.
+* Componentes.
+* Scripts.
+* Plantillas.
+* Workflow de GitHub Pages.
+
+No debe sobrescribir el contenido académico existente en:
+
+```text
+semanas/
+```
+
+### Paso 5. Regenerar configuración
+
+```bash
+npm run config
+```
+
+### Paso 6. Validar GitHub Pages
+
+```bash
+npm run pages:check
+npm run pages:build
+```
+
+### Paso 7. Publicar cambios
+
+```bash
+git add -A
+git commit -m "Actualiza infraestructura Open Class"
+git push
+```
+
+---
+
+## 8. Comandos principales
+
+### Generar portal, lanzadores, scripts y decks
+
+```bash
+npm run config
+```
+
+### Activar una semana
+
+```bash
+npm run semana -- 4
+```
+
+### Activar una semana y cambiar metadatos
+
+```bash
+npm run semana -- 4 --title "Título de la semana" --date "Junio 20 de 2026"
+```
+
+### Forzar sobrescritura del contenido de una semana
+
+```bash
+npm run semana -- 4 --force-content
+```
+
+Usar con cuidado, porque puede reemplazar el archivo en:
+
+```text
+semanas/
+```
+
+### Ver portal principal
+
+```bash
+npm run dev
+```
+
+### Ver una semana específica
+
+```bash
+npm run dev:s1
+```
+
+### Exportar PDF y PPTX
+
+```bash
+npm run export:downloads
+```
+
+### Construir sitio completo
+
+```bash
+npm run build:all
+```
+
+### Construir para GitHub Pages
+
+```bash
+npm run pages:build
+```
+
+### Publicar cambios en GitHub
+
+```bash
+npm run publicar
+```
+
+---
+
+## 9. Flujo recomendado para crear una nueva semana
+
+```bash
+npm run semana -- 5
+```
+
+Luego editar:
+
+```text
+semanas/nombrecurso_semana5.md
+```
+
+Agregar imágenes en:
+
+```text
+public/imagenes/
+```
+
+Probar:
+
+```bash
+npm run dev:s5
+```
+
+Construir:
+
+```bash
+npm run pages:build
+```
+
+Publicar:
+
+```bash
+npm run publicar
+```
+
+---
+
+## 10. Layouts disponibles
+
+Los layouts disponibles en el tema son:
+
+```text
 slide-01-portada
 slide-02-titulo
 slide-03-imagen-izquierda
@@ -264,763 +504,151 @@ slide-12-cierre
 slide-codigo
 ```
 
-Nombres correctos:
+La plantilla:
 
-```txt
-slide-08-titulo-texto
-slide-09-objetivos
+```text
+plantillas/semana.md
 ```
 
-No usar:
-
-```txt
-slide-08-objetivos
-slide-09-titulo-texto
-```
+incluye ejemplos de uso para cada layout.
 
 ---
 
-## 7. Uso correcto de slots
+## 11. Recomendaciones de edición
 
-Los layouts personalizados usan slots de Slidev.
+No editar manualmente estos archivos salvo que estés modificando la infraestructura:
 
-Ejemplo:
-
-```md
-::title::
-Título de la diapositiva
-
-::content::
-Contenido de la diapositiva.
+```text
+slides.md
+scripts/decks.mjs
+curso_semanaN.md
+package.json
 ```
 
-No se deben cerrar los slots con `::`.
-
-Incorrecto:
-
-```md
-::title::
-Título de la diapositiva
-::
-```
-
-Correcto:
-
-```md
-::title::
-Título de la diapositiva
-```
-
----
-
-## 8. Slots por layout
-
-### Portada
-
-```md
-::title::
-Nombre del curso
-
-::week::
-Semana 1
-
-::date::
-Mayo 04, 2026
-```
-
-### Título y contenido
-
-```md
-::title::
-Título de la diapositiva
-
-::content::
-Contenido de la diapositiva.
-```
-
-### Imagen
-
-```md
-::title::
-Título de la diapositiva
-
-::image::
-<img src="/imagenes/visualizacion-bigdata.png" alt="Descripción de la imagen" />
-
-::content::
-Texto de apoyo.
-```
-
-### Video o multimedia
-
-```md
-::title::
-Video de apoyo
-
-::media::
-<iframe src="https://www.youtube.com/embed/ID_DEL_VIDEO" allowfullscreen></iframe>
-```
-
-### Dos columnas
-
-```md
-::title::
-Título general
-
-::left::
-Contenido de la columna izquierda.
-
-::right::
-Contenido de la columna derecha.
-```
-
-### Dos títulos y dos columnas
-
-```md
-::leftTitle::
-Título izquierdo
-
-::rightTitle::
-Título derecho
-
-::left::
-Contenido izquierdo.
-
-::right::
-Contenido derecho.
-```
-
-### Código
-
-````md
----
-layout: slide-codigo
----
-
-::title::
-Ejemplo de procesamiento
-
-::content::
-```python
-datos = ["volumen", "velocidad", "variedad"]
-for valor in datos:
-    print(valor)
-```
-````
-
----
-
-## 9. Recursos públicos
-
-Los recursos deben ubicarse dentro de `public/`.
-
-Ejemplos:
-
-```txt
-public/fondos/slide-01-portada.png
-public/imagenes/visualizacion-bigdata.png
-public/videos/test.mp4
-public/descargas/
-```
-
-Desde Markdown o Vue se referencian así:
-
-```html
-<img src="/imagenes/visualizacion-bigdata.png" alt="Visualización Big Data" />
-<img src="/fondos/slide-01-portada.png" alt="Fondo institucional" />
-<video src="/videos/test.mp4" controls></video>
-```
-
-No usar rutas como:
-
-```txt
-../public/imagenes/archivo.png
-/public/imagenes/archivo.png
-./imagenes/archivo.png
-../imagenes/archivo.png
-```
-
----
-
-## 10. Enlaces desde el portal
-
-Desde `slides.md`, los enlaces a semanas deben usar rutas relativas:
-
-```html
-<a href="./semanas/bigdata_semana1/#/1" target="_self">Semana 1 · Introducción al Big Data</a>
-```
-
-No usar:
-
-```txt
-bigdata_semana1.md
-/semanas/bigdata_semana1/
-semanas/bigdata_semana1/index.html
-```
-
-Para descargas desde el portal:
-
-```html
-<a href="./descargas/bigdata_semana1.pdf" target="_blank">Descargar PDF Semana 1</a>
-<a href="./descargas/bigdata_semana1.pptx" target="_blank">Descargar PPTX Semana 1</a>
-```
-
-Usar rutas relativas ayuda a que el sitio funcione tanto en local como en GitHub Pages.
-
----
-
-## 11. Instalación
-
-Instalar dependencias:
-
-```powershell
-npm install
-```
-
-Si hay problemas de instalación:
-
-```powershell
-Remove-Item -Recurse -Force .\node_modules -ErrorAction SilentlyContinue
-Remove-Item -Force .\package-lock.json -ErrorAction SilentlyContinue
-npm install
-```
-
-En GitHub Actions se usa:
+Estos archivos pueden regenerarse con:
 
 ```bash
-npm ci
+npm run config
 ```
 
-Por eso es importante mantener actualizado `package-lock.json`.
+Editar principalmente:
 
----
-
-## 12. Comandos principales
-
-### Editar el portal
-
-```powershell
-npm run dev
-```
-
-Este comando abre `slides.md` con hot-reload en:
-
-```txt
-http://127.0.0.1:3000/
-```
-
-### Editar una semana
-
-```powershell
-npm run dev:s1
-npm run dev:s2
-npm run dev:s3
-npm run dev:s4
-npm run dev:s5
-npm run dev:s6
-npm run dev:s7
-npm run dev:s8
-```
-
-### Editar portal y semanas activas en paralelo
-
-```powershell
-npm run dev:todo
-```
-
-### Construir el sitio
-
-```powershell
-npm run build:all
-```
-
-### Construir solo lo pendiente
-
-```powershell
-npm run build:incremental
-```
-
-### Exportar descargas
-
-```powershell
-npm run export:downloads
-```
-
-### Exportar solo lo pendiente
-
-```powershell
-npm run export:incremental
-```
-
-### Construir y servir sin exportar
-
-```powershell
-npm run preview:static
-```
-
-### Exportar, construir y servir
-
-```powershell
-npm run preview:pages
-```
-
-### Ver todo el sitio localmente
-
-```powershell
-npm run vista
-```
-
-Este comando limpia, exporta descargas, construye el sitio y lo sirve en:
-
-```txt
-http://127.0.0.1:4173/
+```text
+openclass.config.json
+semanas/curso_semanaN.md
+public/imagenes/
 ```
 
 ---
 
-## 13. `package.json` usado
+## 12. Despliegue con GitHub Pages
 
-La sección de scripts funciona así:
+El workflow está en:
 
-```json
-{
-  "scripts": {
-    "dev": "slidev slides.md --open --port 3000",
-    "dev:s1": "slidev bigdata_semana1.md --open --port 3001",
-    "dev:s2": "slidev bigdata_semana2.md --open --port 3002",
-    "dev:s3": "slidev bigdata_semana3.md --open --port 3003",
-    "dev:s4": "slidev bigdata_semana4.md --open --port 3004",
-    "dev:s5": "slidev bigdata_semana5.md --open --port 3005",
-    "dev:s6": "slidev bigdata_semana6.md --open --port 3006",
-    "dev:s7": "slidev bigdata_semana7.md --open --port 3007",
-    "dev:s8": "slidev bigdata_semana8.md --open --port 3008",
-    "build:all": "node scripts/build-site.mjs",
-    "build:incremental": "node scripts/build-incremental.mjs",
-    "export:downloads": "node scripts/export-downloads.mjs",
-    "export:incremental": "node scripts/export-incremental.mjs",
-    "vista": "npm run clean && npm run export:downloads && npm run build:all && http-server dist -p 4173 -c-1 -o",
-    "publicar": "node scripts/publicar.mjs",
-    "dev:todo": "node scripts/dev-all.mjs",
-    "preview:static": "npm run build:all && http-server dist -p 4173 -c-1",
-    "preview:pages": "npm run export:downloads && npm run build:all && http-server dist -p 4173 -c-1"
-  }
-}
-```
-
----
-
-## 14. Exportación a PDF y PPTX
-
-La exportación se controla desde:
-
-```txt
-scripts/export-downloads.mjs
-```
-
-Los archivos generados quedan en:
-
-```txt
-public/descargas/
-```
-
-Luego, al construir el sitio, Slidev copia esos archivos hacia:
-
-```txt
-dist/descargas/
-```
-
-Advertencia importante:
-
-- El PDF es útil para estudiantes.
-- El PPTX generado por Slidev puede no ser editable como texto.
-- Antes de publicar un PPTX, revisar que no incluya notas o información interna que no deba compartirse.
-
-En este proyecto, `exportable: true` genera PDF y PPTX.
-
----
-
-## 15. Publicación en GitHub Pages
-
-El despliegue se hace mediante GitHub Actions.
-
-Archivo:
-
-```txt
+```text
 .github/workflows/deploy.yml
 ```
 
-El workflow:
+Cada vez que se hace `push` a `main`, GitHub Actions ejecuta:
 
-1. Instala dependencias con `npm ci`.
-2. Instala Chromium para exportar.
-3. Ejecuta `npm run export:downloads`.
-4. Ejecuta `npm run build:all`.
-5. Publica `dist/` en GitHub Pages.
-
-En GitHub, configurar:
-
-```txt
-Settings → Pages → Build and deployment → Source: GitHub Actions
+```bash
+npm run pages:build
 ```
 
----
+El sitio generado queda en:
 
-## 16. Base del sitio
-
-En local, el sitio funciona con base:
-
-```txt
-/
-```
-
-En GitHub Pages, si el repositorio se llama:
-
-```txt
-openclass-bigdata
-```
-
-la base pública normalmente será:
-
-```txt
-/openclass-bigdata/
-```
-
-Por eso `scripts/build-site.mjs` debe leer la variable:
-
-```txt
-SITE_BASE
-```
-
-En GitHub Actions se define así:
-
-```yaml
-env:
-  SITE_BASE: /${{ github.event.repository.name }}/
-```
-
-Si el proyecto se publica con dominio personalizado, se puede cambiar a:
-
-```yaml
-env:
-  SITE_BASE: /
-```
-
----
-
-## 17. Reglas de contenido Open Class
-
-Cada presentación semanal debe responder a una sesión de 90 minutos.
-
-Debe incluir:
-
-1. Portada.
-2. Título de la sesión.
-3. Objetivos de aprendizaje.
-4. Ruta de trabajo.
-5. Desarrollo conceptual.
-6. Ejemplos aplicados.
-7. Actividad didáctica breve.
-8. Actividad práctica.
-9. Producto esperado.
-10. Preguntas de análisis.
-11. Socialización.
-12. Resolución de dudas.
-13. Cierre académico.
-14. Recordatorio institucional.
-15. Diapositiva final.
-
----
-
-## 18. Criterios Open Class
-
-Cada semana debe procurar cumplir:
-
-1. Tolerancia máxima de 5 minutos.
-2. Desarrollo suficiente de la temática.
-3. Presentación diferente al aula virtual.
-4. Actividad didáctica breve, máximo 20 minutos.
-5. Duración efectiva total de 90 minutos.
-6. Resolución de dudas en máximo 15 minutos.
-7. Recordatorio de Encuesta de Percepción Estudiantil.
-
----
-
-## 19. Notas del presentador
-
-Cada diapositiva puede incluir notas del presentador en comentarios HTML:
-
-```md
-<!--
-Notas del presentador:
-Explicar el concepto con un ejemplo cercano al contexto profesional de los estudiantes.
--->
-```
-
-Para la publicación web se usa:
-
-```txt
---without-notes
-```
-
-Esto evita que las notas queden incluidas en el sitio construido.
-
-Antes de publicar archivos PPTX, revisar manualmente si las notas quedaron incorporadas en el archivo exportado.
-
----
-
-## 20. Problemas frecuentes
-
-### Aparece una diapositiva blanca al inicio
-
-Causas probables:
-
-- El bloque global quedó separado de la portada.
-- El archivo interno de semana incluye configuración global.
-- El lanzador raíz tiene contenido adicional.
-
-Solución:
-
-- En `slides.md`, poner `layout: slide-01-portada` dentro del primer bloque.
-- En `bigdata_semanaN.md`, usar únicamente el bloque con `src`.
-- En `semanas/bigdata_semanaN.md`, iniciar directamente con `layout`.
-
----
-
-### Error de layout desconocido
-
-Mensaje posible:
-
-```txt
-Unknown layout "slide-08-objetivos"
-```
-
-Solución:
-
-```txt
-slide-08-titulo-texto
-slide-09-objetivos
-```
-
----
-
-### Error al exportar PDF o PPTX
-
-Probar primero la semana individual:
-
-```powershell
-npm run dev:s2
-```
-
-Luego exportarla sola:
-
-```powershell
-npx slidev export bigdata_semana2.md --format pdf --timeout 120000 --wait 3000 --wait-until none --output public/descargas/bigdata_semana2.pdf
-```
-
-Si falla, revisar esa semana antes de activarla en `scripts/decks.mjs`.
-
-Mientras se corrige, quitarla temporalmente de `scripts/decks.mjs` o dejar `exportable: false`.
-
----
-
-### El despliegue falla en GitHub Actions
-
-Revisar el paso exacto que falló:
-
-```txt
-Actions → Build Slidev site
-```
-
-Pasos comunes donde puede fallar:
-
-```txt
-npm ci
-npx playwright install chromium --with-deps
-npm run export:downloads
-npm run build:all
-```
-
-Si falla en `export:downloads`, probablemente una semana activa no está renderizando bien.
-
----
-
-### Los enlaces funcionan localmente, pero no en GitHub Pages
-
-Revisar:
-
-1. Que `SITE_BASE` esté configurado.
-2. Que los enlaces del portal sean relativos.
-3. Que no se usen rutas absolutas como `/descargas/...` en el portal.
-4. Que el sitio esté publicado desde GitHub Actions.
-
----
-
-## 21. `.gitignore` recomendado
-
-```gitignore
-node_modules/
+```text
 dist/
-.slidev/
-node_modules/.vite/
-.DS_Store
-*.log
-.env
 ```
 
-La carpeta `public/descargas/` puede generarse automáticamente. No es necesario editar manualmente `dist/`.
+y se publica automáticamente con GitHub Pages.
 
 ---
 
-## 22. Flujo de trabajo recomendado
+## 13. Solución de problemas frecuentes
 
-### Crear o editar una semana
+### Error en `scripts/decks.mjs`
 
-Editar:
+Si aparece un error similar a:
 
-```txt
-semanas/bigdata_semanaN.md
+```text
+SyntaxError: Invalid regular expression: missing /
 ```
 
-### Probar una semana
-
-```powershell
-npm run dev:sN
-```
-
-Ejemplo:
-
-```powershell
-npm run dev:s1
-```
-
-### Activar la semana
-
-Editar:
-
-```txt
-scripts/decks.mjs
-```
-
-Agregar un bloque como:
+revisar que la función `withBase()` tenga esta línea:
 
 ```js
-{
-  name: "bigdata_semana4",
-  entry: "bigdata_semana4.md",
-  out: "dist/semanas/bigdata_semana4",
-  base: withBase("semanas/bigdata_semana4/"),
-  exportable: true,
-}
+return `${SITE_BASE}${value.replace(/^[/]+/, "")}`;
 ```
 
-### Ver todo localmente
+### No aparece una semana en el portal
 
-```powershell
-npm run vista
+Revisar que esté activa en:
+
+```json
+"activeWeeks": [1, 2, 3]
 ```
 
-### Subir cambios
+También se puede activar con:
 
-```powershell
-git add .
-git commit -m "Actualizar presentación Semana N"
-git push origin main
+```bash
+npm run semana -- N
 ```
 
-GitHub Actions publicará el sitio automáticamente.
+### No se ven imágenes
 
----
+Revisar que estén en:
 
-## 23. Reglas finales
-
-- No editar `dist/` manualmente.
-- No compilar directamente archivos dentro de `semanas/`.
-- No poner configuración global dentro de `semanas/bigdata_semanaN.md`.
-- No cerrar slots con `::`.
-- No usar layouts inexistentes.
-- No usar rutas relativas hacia `../public`.
-- No enlazar archivos `.md` desde el portal.
-- No enlazar `index.html` desde el portal.
-- Exportar desde los lanzadores raíz.
-- Activar solo las semanas listas.
-- Revisar los PPTX antes de publicarlos.
-- Mantener la plantilla institucional dentro de `theme/uniminuto`.
-
----
-
-## 24. Archivos complementarios sugeridos
-
-Para mantener el README más limpio, se recomienda mover los prompts a:
-
-```txt
-docs/prompts.md
+```text
+public/imagenes/
 ```
 
-Contenido sugerido:
+y que se referencien así:
 
-```txt
-- Prompt maestro para generar una semana.
-- Prompt maestro para actualizar slides.md.
-- Prompt corto para corregir formato Slidev.
-- Reglas de slots.
-- Reglas de notas del presentador.
+```html
+<img src="/imagenes/nombre.png" alt="Descripción de la imagen" />
 ```
 
-El README debe explicar cómo operar el proyecto. Los prompts pueden mantenerse como documentación complementaria.
+### No se ven los fondos institucionales
 
----
+Verificar que existan:
 
-## 25. Resumen operativo
-
-```txt
-Portal:
-slides.md
-
-Lanzadores:
-bigdata_semana1.md ... bigdata_semana8.md
-
-Contenido real:
-semanas/bigdata_semana1.md ... semanas/bigdata_semana8.md
-
-Control de publicación:
-scripts/decks.mjs
-
-Recursos:
-public/
-
-Plantilla:
-theme/uniminuto/
-
-Editar portal:
-npm run dev
-
-Editar semana:
-npm run dev:s1
-
-Ver todo:
-npm run vista
-
-Construir:
-npm run build:all
-
-Exportar:
-npm run export:downloads
-
-Publicar:
-GitHub Pages con GitHub Actions
+```text
+public/fondos/slide-01-portada.png
+public/fondos/slide-05-template.png
+public/fondos/slide-06-cierre.png
 ```
 
 ---
 
-## 26. Estado del proyecto
+## 14. Flujo de mantenimiento del template
 
-El proyecto queda preparado para mantener presentaciones Open Class semanales con Slidev, una plantilla institucional estable, exportaciones descargables y despliegue progresivo en GitHub Pages.
+Cuando se mejore el template base:
 
-La arquitectura permite:
+```bash
+git add -A
+git commit -m "Mejora plantilla Open Class"
+git push
+```
 
-- Crear nuevas semanas con rapidez.
-- Probar cada presentación por separado.
-- Construir el sitio completo.
-- Exportar PDF y PPTX.
-- Publicar solo las semanas listas.
-- Evitar que una semana incompleta detenga todo el despliegue.
+Luego copiar la plantilla actualizada al paquete generador:
+
+```bash
+robocopy D:\OpenClass\openclass-uniminuto-template D:\OpenClass\create-openclass-uniminuto\template /E /XD .git node_modules dist .slidev /XF openclass-template.zip
+```
+
+Publicar nueva versión del paquete:
+
+```bash
+cd D:\OpenClass\create-openclass-uniminuto
+npm version patch
+npm publish --access public
+```
+
+Actualizar cursos existentes:
+
+```bash
+npm create openclass-uniminuto@latest . -- --update-theme
+npm run config
+npm run pages:build
+```

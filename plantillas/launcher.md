@@ -1,11 +1,11 @@
 ---
 theme: ./theme/uniminuto
-title: Big Data — Semana 8 — Aplicaciones y tendencias de Big Data
+title: {{COURSE_NAME}} — Semana {{WEEK_NUMBER}} — {{WEEK_TITLE}}
 favicon: /favicon.png
 codeCopy: true
 transition: fade
 routerMode: hash
 drawings:
   persist: false
-src: ./semanas/bigdata_semana8.md
+src: ./semanas/{{COURSE_SHORT}}_semana{{WEEK_NUMBER}}.md
 ---

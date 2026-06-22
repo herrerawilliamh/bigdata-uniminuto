@@ -1,0 +1,86 @@
+{
+  "course": {
+    "shortName": "bigdata",
+    "fullName": "Big Data",
+    "year": "2026",
+    "description": "Curso orientado al estudio de los fundamentos, ecosistemas, tecnologías y plataformas de Big Data, con énfasis en almacenamiento distribuido, procesamiento de datos, streaming, mensajería, analítica, cloud computing y aplicaciones prácticas en las organizaciones.",
+    "openClassLabel": "Open Class"
+  },
+  "generation": {
+    "weeksTotal": 8,
+    "activeWeeks": [1, 2, 3, 4, 5, 6, 7],
+    "overwriteLaunchers": true,
+    "overwritePortal": true,
+    "overwriteDecks": true,
+    "overwritePackageScripts": true,
+    "overwriteWeekContent": false,
+    "exportPortal": false
+  },
+  "weeks": [
+    {
+      "number": 1,
+      "title": "Fundamentos de Big Data",
+      "date": "2026",
+      "centralTheme": "Introducción al Big Data, características principales, valor de los datos y ecosistema general de soluciones.",
+      "activity": "Identificación de escenarios donde Big Data aporta valor organizacional.",
+      "duration": "90 minutos"
+    },
+    {
+      "number": 2,
+      "title": "Ecosistema Big Data",
+      "date": "2026",
+      "centralTheme": "Componentes del ecosistema Big Data: fuentes de datos, almacenamiento, procesamiento, analítica, visualización y toma de decisiones.",
+      "activity": "Construcción conceptual de una arquitectura Big Data básica.",
+      "duration": "90 minutos"
+    },
+    {
+      "number": 3,
+      "title": "Sistemas de almacenamiento distribuido",
+      "date": "2026",
+      "centralTheme": "Almacenamiento distribuido, data lakes, sistemas de archivos distribuidos y bases de datos para grandes volúmenes de información.",
+      "activity": "Análisis de una arquitectura de almacenamiento para datos masivos.",
+      "duration": "90 minutos"
+    },
+    {
+      "number": 4,
+      "title": "Plataformas de procesamiento de datos",
+      "date": "2026",
+      "centralTheme": "Procesamiento distribuido de datos, transformación, limpieza, preparación y ejecución de tareas analíticas.",
+      "activity": "Práctica o análisis guiado de procesamiento de datos en entorno distribuido.",
+      "duration": "90 minutos"
+    },
+    {
+      "number": 5,
+      "title": "Streaming, mensajería y procesamiento en tiempo real",
+      "date": "2026",
+      "centralTheme": "Tecnologías de streaming, mensajería, procesamiento de eventos y análisis de datos en tiempo real.",
+      "activity": "Comparación entre procesamiento batch y streaming en casos reales.",
+      "duration": "90 minutos"
+    },
+    {
+      "number": 6,
+      "title": "Analítica y aprendizaje automático en Big Data",
+      "date": "2026",
+      "centralTheme": "Aplicación de analítica avanzada, modelos de machine learning y tableros de decisión sobre grandes volúmenes de datos.",
+      "activity": "Diseño de un flujo analítico para apoyar la toma de decisiones.",
+      "duration": "90 minutos"
+    },
+    {
+      "number": 7,
+      "title": "Cloud computing para Big Data",
+      "date": "Junio 17 de 2026",
+      "centralTheme": "Diversidad del cloud computing, principales soluciones cloud y aplicaciones prácticas de Big Data en las organizaciones.",
+      "activity": "Análisis de una arquitectura cloud para Big Data en un escenario organizacional.",
+      "duration": "90 minutos"
+    },
+    {
+      "number": 8,
+      "title": "Aplicaciones y tendencias de Big Data",
+      "date": "2026",
+      "centralTheme": "Integración de tecnologías Big Data, casos de uso, retos éticos, seguridad, escalabilidad y tendencias futuras.",
+      "activity": "Actividad de cierre sobre oportunidades y desafíos del Big Data.",
+      "duration": "90 minutos",
+      "status": "draft"
+    }
+  ]
+}
