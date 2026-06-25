@@ -8,7 +8,7 @@
   },
   "generation": {
     "weeksTotal": 8,
-    "activeWeeks": [1, 2, 3, 4, 5, 6, 7],
+    "activeWeeks": [1, 2, 3, 4, 5, 6, 7, 8],
     "overwriteLaunchers": true,
     "overwritePortal": true,
     "overwriteDecks": true,
@@ -76,11 +76,10 @@
     {
       "number": 8,
       "title": "Aplicaciones y tendencias de Big Data",
-      "date": "2026",
+      "date": "Junio 24 de 2026",
       "centralTheme": "Integración de tecnologías Big Data, casos de uso, retos éticos, seguridad, escalabilidad y tendencias futuras.",
       "activity": "Actividad de cierre sobre oportunidades y desafíos del Big Data.",
-      "duration": "90 minutos",
-      "status": "draft"
+      "duration": "90 minutos"
     }
   ]
 }
