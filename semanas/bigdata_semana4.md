@@ -1105,3 +1105,4 @@ El reto profesional consiste en convertir los datos en decisiones responsables, 
 Notas del presentador:
 Agradezca la participación del grupo y refuerce que el aprendizaje de la semana será útil para comprender arquitecturas de datos modernas. Invite a revisar la evaluación, practicar nuevamente el script y relacionar cada pregunta con el mapa conceptual trabajado.
 -->
+

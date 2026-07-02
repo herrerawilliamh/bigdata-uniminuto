@@ -1020,3 +1020,4 @@ Recuerde que el foro pide generar un código que implemente alguna función de s
 
 Finalmente, haga el recordatorio de la Encuesta de Percepción Estudiantil. Explique que este instrumento permite valorar la experiencia académica y aportar al mejoramiento continuo de los cursos y espacios de acompañamiento. Mantenga un tono positivo: la encuesta no es un trámite aislado, sino una oportunidad para que la voz estudiantil contribuya a fortalecer la calidad del proceso formativo. Despídase cordialmente y deje abierta la posibilidad de continuar resolviendo inquietudes por los canales institucionales definidos.
 -->
+

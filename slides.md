@@ -92,6 +92,12 @@ Presentaciones disponibles
 
 <a href="./descargas/bigdata_semana7.pdf" download>Descargar PDF</a> · <a href="./descargas/bigdata_semana7.pptx" download>Descargar PPTX</a>
 
+### **Semana 8**
+
+<a href="./semanas/bigdata_semana8/#/1" target="_self">Aplicaciones y tendencias de Big Data</a>
+
+<a href="./descargas/bigdata_semana8.pdf" download>Descargar PDF</a> · <a href="./descargas/bigdata_semana8.pptx" download>Descargar PPTX</a>
+
 ---
 layout: slide-12-cierre
 ---
