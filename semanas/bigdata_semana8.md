@@ -1127,3 +1127,4 @@ Cierre enfatizando la idea final de la diapositiva: Big Data en la nube no se tr
 
 Despídase con claridad, agradezca el tiempo y deje abierto el canal institucional para dudas posteriores.
 -->
+

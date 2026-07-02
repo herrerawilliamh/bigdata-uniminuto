@@ -75,6 +75,13 @@ export const decks = [
     base: withBase("semanas/bigdata_semana7/"),
     exportable: true,
   },
+  {
+    name: "bigdata_semana8",
+    entry: "bigdata_semana8.md",
+    out: "dist/semanas/bigdata_semana8",
+    base: withBase("semanas/bigdata_semana8/"),
+    exportable: true,
+  },
 ];
 
 export default decks;

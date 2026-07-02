@@ -1518,3 +1518,4 @@ En Big Data, esta capacidad es fundamental para integrar sistemas, automatizar p
 Notas del presentador:
 Cerrar retomando el hilo de la sesión. La semana 5 se centra en comprender tecnologías que permiten mover y analizar datos en tiempo real. Reforzar que el estudiante debe estudiar las herramientas por su función: mensajería, streaming, integración, procesamiento o almacenamiento. Finalizar agradeciendo la participación e invitando a revisar la evaluación y completar la encuesta institucional.
 -->
+
